@@ -20,9 +20,9 @@ public class Clause {
     public boolean isFalse(Model m){
         for(int l : litterals){
             if(l<0){ //si le litteral a le symbole negation...
-                if(!m.getValue(l)) return false; //...il est true si sa valeur dans le modele est false, d'ou inversion via !
+                if(!m.getValue(-l-1)) return false; //...il est true si sa valeur dans le modele est false, d'ou inversion via !
             }
-            else if(m.getValue(l)) return false; //autrement pas d'inversion necessaire
+            else if(m.getValue(l-1)) return false; //autrement pas d'inversion necessaire
         }
 
         //si on n'a trouve aucun litteral vrai

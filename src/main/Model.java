@@ -65,7 +65,6 @@ public class Model {
             }
 
             Model m = new Model(temp);      //we create a brand new model with that list
-
             if(cnf.isTrue(m)){
                 return m;       //if this model works for our cnf, we return it and the algorithm ends there (else we keep searching)
             }
