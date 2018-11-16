@@ -1,8 +1,12 @@
+
 package main;
 
+import java.util.*;
+
+
 public class Clause {
-    Litteral[] litterals;
-    public Clause(Litteral[] lit)
+    ArrayList<Integer> litterals;
+    public Clause(ArrayList<Integer> lit)
     {
         this.litterals=lit;
     }
@@ -14,14 +18,22 @@ public class Clause {
      * @return true si la clause est fausse, false autrement
      */
     public boolean isFalse(Model m){
-        for(Litteral l : litterals){
-            if(l.neg){ //si le litteral a le symbole negation...
-                if(!m.getValue(l.var)) return false; //...il est true si sa valeur dans le modele est false, d'ou inversion via !
+        for(int l : litterals){
+            if(l<0){ //si le litteral a le symbole negation...
+                if(!m.getValue(l)) return false; //...il est true si sa valeur dans le modele est false, d'ou inversion via !
             }
-            else if(m.getValue(l.var)) return false; //autrement pas d'inversion necessaire
+            else if(m.getValue(l)) return false; //autrement pas d'inversion necessaire
         }
 
         //si on n'a trouve aucun litteral vrai
         return true;
+    }
+    public void tostring()
+    {
+        for(int i:litterals)
+        {
+            System.out.print(i);
+            System.out.print(" ");
+        }
     }
 }

@@ -1,12 +1,14 @@
 package main;
-
+import java.util.*;
 public class Formula {
-    private Clause[] clauses;
+    private ArrayList<Clause> clauses;
     private int nbVar;
-    public  Formula (Clause[] c, int n)
+    private int nbClause;
+    public  Formula (ArrayList<Clause> c, int n,int m)
     {
         this.clauses=c;
         this.nbVar=n;
+        this.nbClause=m;
     }
 
     public int getNbVar() {
@@ -24,5 +26,13 @@ public class Formula {
             if(c.isFalse(m)) return false; //si au moins une clause est fausse, la CNF est fausse
         }
         return true; //si on n'a trouve aucune clause fausse, la CNF est vraie
+    }
+    public void tostring()
+    {
+        for(int i=0;i<clauses.size();i++)
+        {
+            clauses.get(i).tostring();
+            System.out.println();
+        }
     }
 }
